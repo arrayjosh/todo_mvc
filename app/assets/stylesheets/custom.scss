@@ -1,0 +1,7 @@
+#list_items {
+  .item {
+    &.completed {
+      text-decoration: line-through;
+    }
+  }
+}

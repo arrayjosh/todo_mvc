@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :require_login
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   # GET /lists
@@ -10,6 +11,8 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
+    @item = Item.new
+    @item.list = @list
   end
 
   # GET /lists/new

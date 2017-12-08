@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   resources :lists do
-    resources :items
+    resources :items do
+      member do
+        put :toggle
+      end
+    end
   end
 
   devise_for :users

@@ -3,5 +3,22 @@
   <%= @list.name %>
 </p>
 
+<div>
+  <%= form_with model: [@list, @item], local: true do |form| %>
+    <%= form.hidden_field :completed, value: false %>
+    <%= form.text_field :description, placeholder: "Add a Todo" %>
+  <% end %>
+</div>
+
+<ul id="list_items">
+  <% @list.items.each do |item| %>
+    <li class="item <%= 'completed' if item.completed %>">
+      <%= link_to 'toggle', toggle_list_item_path(@list, item), method: :put %>
+      <%= item.description %>
+      <%= link_to 'destroy', list_item_path(@list, item), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>
