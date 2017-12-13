@@ -1,7 +1,10 @@
-#list_items {
-  .item {
-    &.completed {
-      text-decoration: line-through;
+body {
+  padding-top: 50px;
+  #list_items {
+    .item {
+      &.completed {
+        text-decoration: line-through;
+      }
     }
   }
 }

@@ -1,0 +1,4 @@
+<% link_options ||= {} %>
+<li class='<%= "active" if current_page? path %>'>
+  <%= link_to text, path, link_options %>
+</li>
