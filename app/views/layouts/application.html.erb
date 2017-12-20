@@ -17,13 +17,27 @@
           <%= link_to image_tag('ruby.svg', height: '40'), root_path %>
         </div>
         <ul class="nav navbar-nav">
-          <%= render 'nav_link', text: 'Home', path: root_path %>
-          <%= render 'nav_link', text: 'New List', path: new_list_path %>
-          <%= render 'nav_link', text: 'My Lists', path: lists_path %>
+          <!-- Blogs Dropdown -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blogs <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <%= render 'nav_link', text: 'New Blog Post', path: new_article_path %>
+              <%= render 'nav_link', text: 'View Blogs', path: articles_path %>
+            </ul>
+          </li>
+          <!-- Lists Dropdown -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lists <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <%= render 'nav_link', text: 'New List', path: new_list_path %>
+              <%= render 'nav_link', text: 'My List', path: lists_path %>
+            </ul>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <%= render 'nav_link', text: "Signed in as #{current_user.email}", path: edit_user_registration_path %>
+            <%= render 'nav_link', text: 'Admin', path: admin_path if current_user.is_admin %>
+            <%= render 'nav_link', text: "Signed in as #{current_user.firstname} #{current_user.lastname[0]}.", path: profile_path %>
             <%= render 'nav_link', text: 'Log Out', path: destroy_user_session_path, link_options: {method: :delete} %>
           <% else %>
             <%= render 'nav_link', text: 'Log In', path: new_user_session_path %>
